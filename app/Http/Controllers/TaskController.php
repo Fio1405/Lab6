@@ -9,6 +9,7 @@ use App\Models\User;
 use App\Models\Label;
 
 
+
 class TaskController extends Controller
 {
     public function index()
@@ -60,6 +61,8 @@ class TaskController extends Controller
         $task->labels()->attach($validatedData['labels']);
     }
 
+    
+
     return redirect('/tasks');
 }
 
@@ -100,6 +103,7 @@ class TaskController extends Controller
 
         return redirect('/tasks');
     }
+    
 
     
 }

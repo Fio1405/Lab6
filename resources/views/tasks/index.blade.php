@@ -32,6 +32,7 @@
                             @endforeach
                         </td>
                         <td>
+                            @auth
                             @if ($task->completed)
                             <span class="badge bg-success">Completada</span>
                             @else
@@ -40,7 +41,8 @@
                                 @method('PATCH')
                                 <button type="submit" class="btn btn-outline-success">Completada</button>
                             </form>
-                            @endif
+                            @endif  
+                            @endauth
                         </td>
                     </tr>
                     @endforeach

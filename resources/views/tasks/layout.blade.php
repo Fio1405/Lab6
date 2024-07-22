@@ -23,13 +23,20 @@
                     </svg>
                     <span class="fs-4">LOGO</span>
                 </a>
-
+               
                 <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
-                    <a class="me-3 py-2 link-body-emphasis text-decoration-none" href="#">Inicio</a>
-                    <a class="me-3 py-2 link-body-emphasis text-decoration-none" href="#">Nosotros</a>
-                    <a class="me-3 py-2 link-body-emphasis text-decoration-none" href="#">Soporte</a>
-
+                @guest
+                    <a class="me-3 py-2 link-body-emphasis text-decoration-none" href="/login">Inicias Sesión</a>
+                    <a class="me-3 py-2 link-body-emphasis text-decoration-none" href="/register">Registrarse</a>
+                @endguest
+                @auth
+                <form action="/logout" method="POST">
+                    @csrf
+                    <button type="submit" class="btn btn-outline-primary">Logout</button>
+                </form>
+                @endauth
                 </nav>
+                
             </div>
         </header>
 
@@ -79,6 +86,7 @@
             </div>
         </footer>
     </div>
+   
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
 </body>

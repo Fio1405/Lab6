@@ -1,6 +1,7 @@
 @extends('tasks.layout')
 
 @section('content')
+@auth
 <div class='container'>
 <h1>Crear una tarea</h1>
 <hr>
@@ -16,12 +17,9 @@
     </div>
     <div class="form-group">
                 <label for="user">Usuario</label>
-                <select name="user" id="user" class="form-control">
-                    @foreach($users as $user)
-                        <option value="{{ $user->id }}">{{ $user->name }}</option>
-                    @endforeach
-                </select>
-            <div>
+                <input type="text" id="user" class="form-control" value="{{ auth()->user()->name }}" readonly>
+                <input type="hidden" name="user" value="{{ auth()->id() }}">
+            
     <div>
         <label for="status" class="form-label">Prioridad</label>
         <select class="form-select" id="priority" name="priority">
@@ -30,6 +28,7 @@
             @endforeach
         </select>
     </div>
+    
     <div>
         <label for="labels" class="form-label">Etiquetas</label>
         <select class="form-select" id="labels" name="labels[]" multiple>
@@ -40,4 +39,5 @@
     </div>
     <button type="submit" class="btn btn-primary">Crear</button>
 </div>
+@endauth
 @endsection
